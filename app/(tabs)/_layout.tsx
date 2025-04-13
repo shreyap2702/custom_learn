@@ -1,44 +1,42 @@
 import { Tabs } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
+import { Image } from 'react-native';
 
-export default function TabsLayout() {
+export default function TabLayout() {
   return (
-    <Tabs
-      screenOptions={{
-        headerShown: false,
-        tabBarStyle: {
-          borderTopWidth: 1,
-          borderTopColor: '#E6E9EB',
-          paddingVertical: 16,
-        },
-      }}
-    >
+    <Tabs screenOptions={{
+      tabBarActiveTintColor: '#7257FF',
+      tabBarInactiveTintColor: '#666666',
+    }}>
       <Tabs.Screen
         name="home"
         options={{
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="home" size={24} color={color} />
+          title: 'Home',
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={require('../../assets/images/home.png')}
+              style={{
+                width: 24,
+                height: 24,
+                tintColor: focused ? '#7257FF' : '#666666'
+              }}
+              resizeMode="contain"
+            />
           ),
-          tabBarActiveTintColor: '#7257FF',
         }}
       />
       <Tabs.Screen
         name="topics"
         options={{
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="document-text-outline" size={24} color={color} />
-          ),
-          tabBarActiveTintColor: '#7257FF',
-          href: null,
+          title: 'Topics',
+          headerShown: false,
         }}
       />
       <Tabs.Screen
         name="progress"
         options={{
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="trending-up-outline" size={24} color={color} />
-          ),
-          tabBarActiveTintColor: '#7257FF',
+          title: 'Progress',
+          headerShown: false,
         }}
       />
     </Tabs>
